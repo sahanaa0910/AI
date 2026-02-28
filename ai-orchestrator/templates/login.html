@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Orchestrator - Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body class="auth-page">
+  <div class="auth-card">
+    <h1>AI Orchestrator</h1>
+    <p>Teacher Productivity Suite</p>
+    <form id="login-form">
+      <label>Email</label>
+      <input type="email" name="email" value="teacher@example.com" required />
+      <label>Password</label>
+      <input type="password" name="password" value="password123" required />
+      <button type="submit">Login</button>
+    </form>
+    <p class="hint">Demo: teacher@example.com / password123</p>
+  </div>
+  <div id="toast-container"></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
