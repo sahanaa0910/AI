@@ -1,0 +1,2 @@
+# AI
+Summa oru project
