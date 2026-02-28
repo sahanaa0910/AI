@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Orchestrator Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <h2>AI Orchestrator</h2>
+      <p>{{ user_name }} ({{ role }})</p>
+      <nav>
+        <a href="#" data-section="dashboard-section">Dashboard</a>
+        <a href="#" data-section="grading-section">Auto Grading</a>
+        <a href="#" data-section="attendance-section">Attendance</a>
+        <a href="#" data-section="resources-section">Resources</a>
+        <a href="#" data-section="iep-section">IEP Reports</a>
+      </nav>
+      <div class="sidebar-actions">
+        <button id="theme-toggle">🌗 Theme</button>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="dashboard-section" class="panel visible">
+        <h1>Smart Dashboard</h1>
+        <div class="cards cards-4">
+          <article class="card"><h3>Total Students</h3><p id="total-students">0</p></article>
+          <article class="card"><h3>Pending Grading</h3><p id="pending-grading">0</p></article>
+          <article class="card"><h3>Weekly Time Saved</h3><p id="time-saved">0 hrs</p></article>
+          <article class="card"><h3>Workload Reduction</h3><p id="workload-reduction">0%</p></article>
+        </div>
+        <div class="card">
+          <h3>Time-Saving Tracker</h3>
+          <div class="progress-wrap"><div id="progress-bar"></div></div>
+          <small id="progress-label">0%</small>
+        </div>
+        <div class="card">
+          <h3>Notifications</h3>
+          <ul id="notifications"></ul>
+        </div>
+      </section>
+
+      <section id="grading-section" class="panel">
+        <h2>AI Automated Grading</h2>
+        <form id="grading-form" class="stack">
+          <input name="student_name" placeholder="Student name" required />
+          <input name="assignment_title" placeholder="Assignment title" required />
+          <textarea name="response_text" placeholder="Paste student response" required></textarea>
+          <button type="submit">Auto Grade</button>
+        </form>
+        <pre id="grading-result"></pre>
+      </section>
+
+      <section id="attendance-section" class="panel">
+        <h2>Attendance Automation</h2>
+        <form id="csv-upload-form" class="stack" enctype="multipart/form-data">
+          <input type="file" name="file" accept=".csv" required />
+          <button type="submit">Upload Student CSV</button>
+        </form>
+        <form id="attendance-form" class="stack">
+          <input name="student_name" placeholder="Student name" required />
+          <input name="class_level" placeholder="Class level" required />
+          <select name="status">
+            <option>Present</option><option>Absent</option><option>Late</option>
+          </select>
+          <button type="submit">Mark Attendance</button>
+        </form>
+      </section>
+
+      <section id="resources-section" class="panel">
+        <h2>Resource Recommendation Engine</h2>
+        <form id="resource-form" class="stack">
+          <input name="subject" placeholder="Subject e.g. math" required />
+          <input name="class_level" placeholder="Class level e.g. middle" required />
+          <button type="submit">Get Recommendations</button>
+        </form>
+        <ul id="resource-results"></ul>
+      </section>
+
+      <section id="iep-section" class="panel">
+        <h2>IEP Report Generator</h2>
+        <form id="iep-form" class="stack">
+          <input name="student_name" placeholder="Student name" required />
+          <textarea name="strengths" placeholder="Strengths" required></textarea>
+          <textarea name="concerns" placeholder="Areas of concern" required></textarea>
+          <textarea name="goals" placeholder="Goals" required></textarea>
+          <textarea name="accommodations" placeholder="Accommodations" required></textarea>
+          <button type="submit">Generate IEP</button>
+        </form>
+        <pre id="iep-result"></pre>
+      </section>
+    </main>
+  </div>
+
+  <div id="loader" class="loader hidden"></div>
+  <div id="toast-container"></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
